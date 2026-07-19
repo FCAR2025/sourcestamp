@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SourceStamp</title>
+    <link rel="stylesheet" href="popup.css">
+  </head>
+  <body>
+    <header class="app-header">
+      <span class="kicker">SourceStamp</span>
+      <p>Local source receipts</p>
+    </header>
+
+    <main>
+      <section class="case-section" aria-labelledby="cases-heading">
+        <div class="section-heading">
+          <h1 id="cases-heading">Cases</h1>
+          <span id="case-count" class="count-label">0 cases</span>
+        </div>
+
+        <form id="case-form" novalidate>
+          <label for="new-case">Create a case</label>
+          <div class="input-row">
+            <input id="new-case" autocomplete="off" placeholder="Smith foreclosure 24CV123">
+            <button id="add-case" class="primary-button" type="submit">Add case</button>
+          </div>
+          <p id="case-error" class="field-message" role="alert"></p>
+        </form>
+
+        <label for="case-select">View case</label>
+        <select id="case-select" disabled>
+          <option value="">No cases yet</option>
+        </select>
+      </section>
+
+      <section class="receipt-section" aria-labelledby="receipts-heading">
+        <div class="section-heading">
+          <h2 id="receipts-heading">Receipts</h2>
+          <span id="receipt-count" class="count-label">0 receipts</span>
+        </div>
+        <p id="empty-state" class="empty-state">Create a case, then capture highlighted text with Alt+S.</p>
+        <ol id="receipt-list" class="receipt-list" aria-live="polite"></ol>
+      </section>
+
+      <p id="app-status" class="app-status" role="status" aria-live="polite"></p>
+    </main>
+
+    <script src="../lib/receipt.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>

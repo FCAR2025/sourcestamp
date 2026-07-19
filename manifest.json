@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "SourceStamp",
+  "version": "0.1.0",
+  "description": "Capture local source receipts from highlighted public-record facts.",
+  "permissions": ["storage", "activeTab"],
+  "action": {
+    "default_title": "SourceStamp",
+    "default_popup": "popup/popup.html"
+  },
+  "background": {
+    "service_worker": "background/service-worker.js"
+  },
+  "commands": {
+    "capture-selection": {
+      "suggested_key": {
+        "default": "Alt+S"
+      },
+      "description": "Capture highlighted text in SourceStamp"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["lib/receipt.js", "content/capture-ui.js", "content/content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
